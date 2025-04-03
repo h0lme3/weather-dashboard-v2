@@ -1,9 +1,5 @@
 import { Suspense } from "react";
-import {
-  getWeatherData,
-  getForecastData,
-  getWeatherCondition,
-} from "@/lib/weather";
+import { getWeatherData, getWeatherCondition } from "@/lib/weather";
 import { SearchForm } from "@/components/search-form";
 import { WeatherDisplay } from "@/components/weather-display";
 import { WeatherForecast } from "@/components/weather-forecast";
