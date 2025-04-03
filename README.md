@@ -1,8 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Weather Dashboard
+
+A modern weather dashboard built with Next.js 15 and shadcn/ui that allows users to search for cities and view current weather conditions and forecasts.
+
+## Features
+
+- Search for cities to view current weather conditions
+- Display of temperature, humidity, wind speed, and pressure
+- 5-day weather forecast
+- Responsive design for mobile and desktop
+- Error handling for invalid searches
+- Dark mode support
+
+## Technologies Used
+
+- Next.js v15 (App Router)
+- React v19
+- TypeScript
+- Tailwind CSS v4
+- shadcn/ui components
+- OpenWeatherMap API
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18.17 or later
+- npm or yarn or pnpm or bun
+- OpenWeatherMap API key
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/h0lme3/weather-dashboard-v2.git
+cd weather-dashboard-v2
+```
+
+2. Run the development server:
 
 ```bash
 npm run dev
@@ -15,19 +50,6 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 
