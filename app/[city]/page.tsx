@@ -24,9 +24,6 @@ export default async function CityPage({ params }: CityPageProps) {
   const weatherData = await getWeatherData(decodedCity);
   const weatherCondition = await getWeatherCondition(weatherData);
 
-  // Fetch forecast data
-  const forecastData = await getForecastData(decodedCity);
-
   return (
     <WeatherBackground condition={weatherCondition}>
       <div className="max-w-3xl mx-auto space-y-8">
@@ -50,7 +47,7 @@ export default async function CityPage({ params }: CityPageProps) {
           <Separator className="bg-white/20" />
 
           <Suspense fallback={<ForecastLoadingSkeleton />}>
-            <WeatherForecast forecastData={forecastData} />
+            <WeatherForecast initialCity={decodedCity} />
           </Suspense>
         </div>
       </div>
