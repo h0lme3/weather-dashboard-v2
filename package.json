@@ -1,5 +1,9 @@
 {
   "name": "weather-dashboard-v2",
+  "author": {
+    "email": "haodev007@gmail.com",
+    "name": "Holmes"
+  },
   "version": "0.1.0",
   "private": true,
   "scripts": {

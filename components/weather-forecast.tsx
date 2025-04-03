@@ -1,31 +1,33 @@
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getForecastData } from "@/lib/weather";
 import { formatDate } from "@/lib/utils";
+import type { ForecastData } from "@/lib/types";
 
-export async function WeatherForecast({ city }: { city: string }) {
-  const forecastData = await getForecastData(city);
+interface WeatherForecastProps {
+  forecastData: ForecastData | null;
+}
 
+export function WeatherForecast({ forecastData }: WeatherForecastProps) {
   if (!forecastData || !forecastData.list || forecastData.list.length === 0) {
     return null;
   }
 
   // Get one forecast per day (noon time) for the next 5 days
   const dailyForecasts = forecastData.list
-    .filter((item: any) => item.dt_txt.includes("12:00:00"))
+    .filter((item) => item.dt_txt.includes("12:00:00"))
     .slice(0, 5);
 
   return (
-    <Card>
+    <Card className="backdrop-blur-sm bg-white/80 dark:bg-slate-800/80">
       <CardHeader>
         <CardTitle className="text-xl">5-Day Forecast</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-          {dailyForecasts.map((forecast: any) => (
+          {dailyForecasts.map((forecast) => (
             <div
               key={forecast.dt}
-              className="flex flex-col items-center p-2 rounded-lg bg-slate-50 dark:bg-slate-800"
+              className="flex flex-col items-center p-2 rounded-lg bg-slate-50/80 dark:bg-slate-800/80"
             >
               <div className="text-sm font-medium">
                 {formatDate(forecast.dt, "short")}

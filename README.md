@@ -1,6 +1,6 @@
 # Weather Dashboard
 
-A modern weather dashboard built with Next.js 15 and shadcn/ui that allows users to search for cities and view current weather conditions and forecasts.
+A simple weather dashboard built with Next.js 15 and shadcn/ui that allows users to search for cities and view current weather conditions and forecasts.
 
 ## Features
 
@@ -35,6 +35,18 @@ A modern weather dashboard built with Next.js 15 and shadcn/ui that allows users
 ```bash
 git clone https://github.com/h0lme3/weather-dashboard-v2.git
 cd weather-dashboard-v2
+```
+
+2. Install modules:
+
+```bash
+npm i
+# or
+yarn
+# or
+pnpm i
+# or
+bun i
 ```
 
 2. Run the development server:

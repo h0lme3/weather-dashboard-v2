@@ -1,5 +1,8 @@
 "use server";
 
+import { notFound } from "next/navigation";
+import type { WeatherData, ForecastData, WeatherCondition } from "@/lib/types";
+
 // OpenWeatherMap API base URL
 const API_BASE_URL = "https://api.openweathermap.org/data/2.5";
 
@@ -7,7 +10,7 @@ const API_BASE_URL = "https://api.openweathermap.org/data/2.5";
 const API_KEY = process.env.OPEN_WEATHER_API_KEY;
 
 // Function to fetch current weather data
-export async function getWeatherData(city: string) {
+export async function getWeatherData(city: string): Promise<WeatherData> {
   if (!API_KEY) {
     throw new Error("OpenWeatherMap API key is not configured");
   }
@@ -22,7 +25,7 @@ export async function getWeatherData(city: string) {
 
     if (!response.ok) {
       if (response.status === 404) {
-        throw new Error(`City "${city}" not found`);
+        notFound(); // This will trigger the not-found.tsx page
       }
       if (response.status === 429) {
         throw new Error("Too many requests. Please try again later.");
@@ -46,7 +49,9 @@ export async function getWeatherData(city: string) {
 }
 
 // Function to fetch forecast data
-export async function getForecastData(city: string) {
+export async function getForecastData(
+  city: string
+): Promise<ForecastData | null> {
   if (!API_KEY) {
     throw new Error("OpenWeatherMap API key is not configured");
   }
@@ -77,4 +82,16 @@ export async function getForecastData(city: string) {
     console.error("Error fetching forecast data:", error);
     return null;
   }
+}
+
+// Function to get weather condition from weather data
+export async function getWeatherCondition(
+  weatherData: WeatherData
+): Promise<WeatherCondition> {
+  if (!weatherData.weather || weatherData.weather.length === 0) {
+    return "Default";
+  }
+
+  const mainCondition = weatherData.weather[0].main as WeatherCondition;
+  return mainCondition || "Default";
 }
