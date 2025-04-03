@@ -30,7 +30,7 @@ export default async function CityPage({ params }: CityPageProps) {
   return (
     <WeatherBackground condition={weatherCondition}>
       <div className="max-w-3xl mx-auto space-y-8">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center backdrop-blur-sm bg-white/50 dark:bg-slate-800/50 rounded-lg p-4">
           <div className="text-center flex-1">
             <h1 className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white">
               Weather Dashboard

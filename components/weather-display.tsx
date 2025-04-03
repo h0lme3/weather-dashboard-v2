@@ -86,6 +86,9 @@ export function WeatherDisplay({ weatherData }: WeatherDisplayProps) {
 
           <div className="flex flex-col items-center justify-center">
             <div className="relative w-32 h-32">
+              <div className="text-center mt-2 capitalize font-medium">
+                {weatherDescription}
+              </div>
               <Image
                 src={`https://openweathermap.org/img/wn/${weatherIcon}@4x.png`}
                 alt={weatherDescription}
@@ -93,9 +96,6 @@ export function WeatherDisplay({ weatherData }: WeatherDisplayProps) {
                 priority
                 className="object-contain"
               />
-            </div>
-            <div className="text-center mt-2 capitalize font-medium">
-              {weatherDescription}
             </div>
           </div>
         </div>
