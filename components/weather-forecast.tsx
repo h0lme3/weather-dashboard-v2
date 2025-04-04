@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatDate } from "@/lib/utils";
-import type { ForecastData } from "@/lib/types";
+import type { ForecastDataResponse } from "@/lib/types";
 
 interface WeatherForecastProps {
-  forecastData: ForecastData | null;
+  forecastData: ForecastDataResponse | null;
 }
 
 export async function WeatherForecast({ forecastData }: WeatherForecastProps) {

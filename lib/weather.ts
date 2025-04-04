@@ -1,6 +1,10 @@
 "use server";
 
-import type { WeatherData, ForecastData, WeatherCondition } from "@/lib/types";
+import type {
+  WeatherDataResponse,
+  ForecastDataResponse,
+  WeatherCondition,
+} from "@/lib/types";
 
 // OpenWeatherMap API base URL
 const API_BASE_URL = "https://api.openweathermap.org/data/2.5";
@@ -12,7 +16,7 @@ const API_KEY = process.env.OPEN_WEATHER_API_KEY;
 export async function getWeatherData(
   city: string,
   shouldThrowNotFound = true
-): Promise<WeatherData | null> {
+): Promise<WeatherDataResponse | null> {
   if (!API_KEY) {
     throw new Error("OpenWeatherMap API key is not configured");
   }
@@ -58,7 +62,7 @@ export async function getWeatherData(
 // Function to fetch forecast data
 export async function getForecastData(
   city: string
-): Promise<ForecastData | null> {
+): Promise<ForecastDataResponse | null> {
   if (!API_KEY) {
     throw new Error("OpenWeatherMap API key is not configured");
   }
@@ -96,7 +100,7 @@ export async function getForecastData(
 
 // Function to get weather condition from weather data
 export async function getWeatherCondition(
-  weatherData: WeatherData | null
+  weatherData: WeatherDataResponse | null
 ): Promise<WeatherCondition> {
   if (
     !weatherData ||

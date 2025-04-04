@@ -9,10 +9,10 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Droplets, Thermometer, Wind, Calendar } from "lucide-react";
 import { formatDate } from "@/lib/utils";
-import type { WeatherData } from "@/lib/types";
+import type { WeatherDataResponse } from "@/lib/types";
 
 interface WeatherDisplayProps {
-  weatherData: WeatherData | null;
+  weatherData: WeatherDataResponse | null;
 }
 
 export function WeatherDisplay({ weatherData }: WeatherDisplayProps) {
