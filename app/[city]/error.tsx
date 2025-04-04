@@ -24,6 +24,9 @@ export default function Error({
       description:
         error.message || "An unexpected error occurred. Please try again.",
     });
+
+    // Update the document title
+    document.title = "Error";
   }, [error]);
 
   return (

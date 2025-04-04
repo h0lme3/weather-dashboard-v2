@@ -1,16 +1,13 @@
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatDate } from "@/lib/utils";
-import { getForecastData } from "@/lib/weather";
+import type { ForecastData } from "@/lib/types";
 
 interface WeatherForecastProps {
-  initialCity: string;
+  forecastData: ForecastData | null;
 }
 
-export async function WeatherForecast({ initialCity }: WeatherForecastProps) {
-  // Fetch forecast data
-  const forecastData = await getForecastData(initialCity);
-
+export async function WeatherForecast({ forecastData }: WeatherForecastProps) {
   if (!forecastData || !forecastData.list || forecastData.list.length === 0) {
     return null;
   }

@@ -1,6 +1,5 @@
 "use server";
 
-import { notFound } from "next/navigation";
 import type { WeatherData, ForecastData, WeatherCondition } from "@/lib/types";
 
 // OpenWeatherMap API base URL
@@ -10,7 +9,10 @@ const API_BASE_URL = "https://api.openweathermap.org/data/2.5";
 const API_KEY = process.env.OPEN_WEATHER_API_KEY;
 
 // Function to fetch current weather data
-export async function getWeatherData(city: string): Promise<WeatherData> {
+export async function getWeatherData(
+  city: string,
+  shouldThrowNotFound = true
+): Promise<WeatherData | null> {
   if (!API_KEY) {
     throw new Error("OpenWeatherMap API key is not configured");
   }
@@ -25,7 +27,12 @@ export async function getWeatherData(city: string): Promise<WeatherData> {
 
     if (!response.ok) {
       if (response.status === 404) {
-        notFound(); // This will trigger the not-found.tsx page
+        if (shouldThrowNotFound) {
+          // Import dynamically to avoid issues with metadata generation
+          const { notFound } = await import("next/navigation");
+          notFound(); // This will trigger the not-found.tsx page
+        }
+        return null; // Return null instead of throwing notFound() when shouldThrowNotFound is false
       }
       if (response.status === 429) {
         throw new Error("Too many requests. Please try again later.");
@@ -65,6 +72,9 @@ export async function getForecastData(
     );
 
     if (!response.ok) {
+      if (response.status === 404) {
+        return null;
+      }
       if (response.status === 429) {
         console.error("Rate limit exceeded for forecast data");
         return null;
@@ -86,9 +96,13 @@ export async function getForecastData(
 
 // Function to get weather condition from weather data
 export async function getWeatherCondition(
-  weatherData: WeatherData
+  weatherData: WeatherData | null
 ): Promise<WeatherCondition> {
-  if (!weatherData.weather || weatherData.weather.length === 0) {
+  if (
+    !weatherData ||
+    !weatherData.weather ||
+    weatherData.weather.length === 0
+  ) {
     return "Default";
   }
 

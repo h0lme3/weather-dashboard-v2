@@ -12,10 +12,14 @@ import { formatDate } from "@/lib/utils";
 import type { WeatherData } from "@/lib/types";
 
 interface WeatherDisplayProps {
-  weatherData: WeatherData;
+  weatherData: WeatherData | null;
 }
 
 export function WeatherDisplay({ weatherData }: WeatherDisplayProps) {
+  if (!weatherData) {
+    return null;
+  }
+
   const { name, main, weather, wind, sys, dt } = weatherData;
   const weatherIcon = weather[0]?.icon || "01d";
   const weatherDescription = weather[0]?.description || "Clear sky";

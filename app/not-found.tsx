@@ -1,6 +1,13 @@
 import Link from "next/link";
 import { MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "City Not Found",
+  description:
+    "We couldn't find the city you're looking for. Please check the spelling and try again.",
+};
 
 export default function NotFound() {
   return (

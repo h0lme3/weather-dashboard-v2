@@ -20,6 +20,9 @@ export default function Error({
     toast.error("Something went wrong", {
       description: "An unexpected error occurred. Please try again.",
     });
+
+    // Update the document title
+    document.title = "Error";
   }, [error]);
 
   return (

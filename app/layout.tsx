@@ -8,8 +8,12 @@ import { Toaster } from "@/components/ui/sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Weather Dashboard",
-  description: "Check current weather conditions for cities around the world",
+  title: {
+    default: "Check Weather Conditions Worldwide",
+    template: "%s | Weather Dashboard",
+  },
+  description:
+    "Search for cities worldwide to check current weather conditions and forecasts. Get real-time updates on temperature, humidity, wind speed, and more.",
 };
 
 export default function RootLayout({
