@@ -1,3 +1,11 @@
+This is just simple weather dashboard but I'd love to share this personal project with everyone
+It's begineer-friendly and it's not that outdated project but I let everyone keep this project latest.
+Feel free to contribute - I love it!
+
+PS.
+When you guys compare it with my [v1 weather dashboard](https://github.com/h0lme3/weather-dashboard-nextjs) 2 years ago, you definitely see the difference yeah? ;)
+If you liked my work, do not forget to give a star and share with your friends!
+
 # Weather Dashboard
 
 A simple weather dashboard built with Next.js 15 and shadcn/ui that allows users to search for cities and view current weather conditions and forecasts.
