@@ -6,6 +6,10 @@ PS.
 When you guys compare it with my [v1 weather dashboard](https://github.com/h0lme3/weather-dashboard-nextjs) 2 years ago, you definitely see the difference yeah? ;)
 If you liked my work, do not forget to give a star and share with your friends!
 
+Before getting started, it looks like this:
+![image](https://github.com/user-attachments/assets/13f66b69-f989-423d-8d0f-2bca730f0156)
+
+
 # Weather Dashboard
 
 A simple weather dashboard built with Next.js 15 and shadcn/ui that allows users to search for cities and view current weather conditions and forecasts.
